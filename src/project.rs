@@ -1,16 +1,16 @@
 use std::path::Path;
 
 use failure::Fallible;
-use rustfst::DrawingConfig;
 use rustfst::prelude::*;
+use rustfst::DrawingConfig;
 
-use crate::fsts::fst_1;
+use crate::fsts::fst_001;
 use crate::utils::generate_image;
 
 pub fn generate_project_images<P: AsRef<Path>>(path_images: P) -> Fallible<()> {
     let path_images = path_images.as_ref();
 
-    let fst = fst_1()?;
+    let fst = fst_001()?;
 
     let mut config = DrawingConfig::default();
     config.portrait = true;
