@@ -1,11 +1,11 @@
-use std::fs::{File, remove_file};
+use std::fs::{remove_file, File};
 use std::path::Path;
 use std::process::{Command, Stdio};
 
 use failure::Fallible;
-use rustfst::DrawingConfig;
 use rustfst::fst_traits::SerializableFst;
 use rustfst::semirings::SerializableSemiring;
+use rustfst::DrawingConfig;
 
 pub fn generate_image<P: AsRef<Path>, F: SerializableFst>(
     path_images: P,
@@ -13,8 +13,8 @@ pub fn generate_image<P: AsRef<Path>, F: SerializableFst>(
     name: &str,
     config: &DrawingConfig,
 ) -> Fallible<()>
-    where
-        F::W: SerializableSemiring,
+where
+    F::W: SerializableSemiring,
 {
     let path_images = path_images.as_ref();
     let path_dot_file = path_images.join(format!("{}.dot", name));
@@ -22,13 +22,7 @@ pub fn generate_image<P: AsRef<Path>, F: SerializableFst>(
 
     let outputs = File::create(path_images.join(format!("{}.svg", name)))?;
     Command::new("dot")
-        .args(&[
-            "-Tsvg",
-            path_dot_file
-                .as_os_str()
-                .to_str()
-                .unwrap(),
-        ])
+        .args(&["-Tsvg", path_dot_file.as_os_str().to_str().unwrap()])
         .stdout(Stdio::from(outputs))
         .spawn()?
         .wait_with_output()?;
