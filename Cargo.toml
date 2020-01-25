@@ -1,0 +1,11 @@
+[package]
+name = "rustfst-images-doc"
+version = "0.1.0"
+authors = ["Alexandre Caulier <alexandre.caulier@protonmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+failure = '0.1'
+rustfst = { git = "https://github.com/Garvys/rustfst", rev = "f3917c94574094cecadda3c2ce4aa86f266705a0" }
