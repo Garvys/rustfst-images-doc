@@ -3,6 +3,7 @@ use std::path::PathBuf;
 use failure::Fallible;
 
 pub mod closure;
+pub mod connect;
 pub mod fsts;
 pub mod invert;
 pub mod project;
@@ -21,6 +22,7 @@ fn main() -> Fallible<()> {
     project::generate_project_images(&path_images)?;
     invert::generate_invert_images(&path_images)?;
     closure::generate_closure_images(&path_images)?;
+    connect::generate_connect_images(&path_images)?;
 
     Ok(())
 }
