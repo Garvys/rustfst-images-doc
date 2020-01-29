@@ -72,3 +72,26 @@ pub fn fst_003() -> Fallible<VectorFst<TropicalWeight>> {
 
     Ok(fst)
 }
+
+// Used for shortest path
+pub fn fst_004() -> Fallible<VectorFst<TropicalWeight>> {
+    let mut fst = VectorFst::<TropicalWeight>::new();
+    let symt = symt!["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"];
+    let symt = Rc::new(symt);
+
+    fst.set_input_symbols(symt.clone());
+    fst.set_output_symbols(symt);
+
+    fst.add_states(4);
+
+    fst.set_start(0)?;
+    fst.set_final(3, 2.0)?;
+
+    fst.emplace_arc(0, 1, 1, 3.0, 1)?;
+    fst.emplace_arc(1, 2, 2, 2.0, 1)?;
+    fst.emplace_arc(1, 3, 3, 4.0, 3)?;
+    fst.emplace_arc(0, 4, 4, 5.0, 2)?;
+    fst.emplace_arc(2, 5, 5, 4.0, 3)?;
+
+    Ok(fst)
+}
