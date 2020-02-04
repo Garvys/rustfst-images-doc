@@ -8,4 +8,4 @@ edition = "2018"
 
 [dependencies]
 failure = '0.1'
-rustfst = { git = "https://github.com/Garvys/rustfst", rev = "4f1bab4" }
+rustfst = { git = "https://github.com/Garvys/rustfst", rev = "1e4116e" }

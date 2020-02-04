@@ -73,6 +73,8 @@ pub fn fsts_replace() -> Fallible<(
     ];
     let mut fst_5: VectorFst<Weight> = replace(fst_list, 10, false)?;
 
+    rm_epsilon(&mut fst_5)?;
+
     // TODO: Shouldn't need that
     fst_5.set_input_symbols(symt.clone());
     fst_5.set_output_symbols(symt.clone());

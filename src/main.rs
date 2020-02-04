@@ -14,6 +14,8 @@ pub mod shortest_path;
 pub mod topsort;
 pub mod union;
 pub mod utils;
+pub mod rmepsilon;
+pub mod determinize;
 
 fn main() -> Fallible<()> {
     let path_crate = PathBuf::from(file!())
@@ -35,6 +37,8 @@ fn main() -> Fallible<()> {
     reverse::generate_reverse_images(&path_images)?;
     shortest_path::generate_shortestpath_images(&path_images)?;
     topsort::generate_topsort_images(&path_images)?;
+    rmepsilon::generate_rmepsilon_images(&path_images)?;
+    determinize::generate_determinize_images(&path_images)?;
 
     Ok(())
 }
